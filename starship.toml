@@ -1,0 +1,31 @@
+[username]
+format = '[╭─ 󰣇 $user]($style) @ '
+style_user = "bold #00ebc7"
+style_root = "bold #bd2f00"
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[$ssh_symbol$hostname]($style)  "
+ssh_symbol = '󰖟 '
+style = "bold #0069cc"
+disabled = false
+
+[directory]
+format = "[$path ]($style)[$read_only ]($read_only_style)"
+repo_root_format = "[󰊢 $repo_root$path ]($repo_root_style)"
+style = "#de00d6"
+repo_root_style = "#de00d6"
+
+read_only = ' ! '
+read_only_style = "#bb1c00"
+truncation_length = 5
+truncate_to_repo = true
+truncation_symbol = ".../"
+
+[git_status]
+style = "white"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+deleted = "x"
