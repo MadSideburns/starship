@@ -1,5 +1,21 @@
+format = """
+[╭─ 󰣇 ]($bold #00ebc7)\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status \
+$fill \
+$battery$time
+[╰─ ](bold #00ebc7)$cmd_duration$memory_usage$character
+"""
+add_newline = true
+
+[fill]
+symbol = "─"
+
 [username]
-format = '[╭─ 󰣇 $user]($style) @ '
+format = '[$user]($style)@'
 style_user = "bold #00ebc7"
 style_root = "bold #bd2f00"
 show_always = true
@@ -23,9 +39,76 @@ truncation_length = 5
 truncate_to_repo = true
 truncation_symbol = ".../"
 
+[directory.substitutions]
+"Scrivania" = " "
+"Documenti" = "󱔗 "
+"Immagini" = " "
+"Musica" = " "
+"Video" = " "
+"Scaricati" = " "
+
+[git_branch]
+format = "on [$symbol$branch(:$remote_branch) ]($style)"
+style = "#ff674c"
+
 [git_status]
+format = """
+{[$all_status]($style)\
+[$ahead_behind]($style)}"""
 style = "white"
+conflicted = "󰞇$count"
 ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-deleted = "x"
+diverged = "⇌⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "$count"
+stashed = "$count"
+modified = "$count"
+staged = "$count"
+renamed = "󰗧$count"
+deleted = "$count"
+typechanged = ""
+
+[battery]
+format = "[$symbol: $percentage]($style) "
+full_symbol = "󱟢"
+charging_symbol = "󰂄"
+discharging_symbol = "󰁾"
+disabled = false
+
+[[battery.display]]
+threshold = 10
+style = "#ff3030"
+[[battery.display]]
+threshold = 30
+style = "#ffcb2e"
+[[battery.display]]
+threshold = 99
+style = "#aaff00"
+[[battery.display]]
+threshold = 100
+style = "#00e751"
+
+[time]
+format = "at [ $time]($style)"
+style = "bold white"
+time_format = "%T"
+disabled = false
+
+[cmd_duration]
+format = "took [󱎫: $duration]($style) "
+style = "bold #ffef5a"
+min_time = 0
+show_milliseconds = true
+
+[memory_usage]
+format = "using [$symbol: ${ram}]($style) "
+symbol = ""
+style = "#92ff4f"
+threshold = 0
+disabled = false
+
+[character]
+format = "$symbol "
+success_symbol = "[─󰍟](bold #00ebc7)"
+error_symbol = "[─󰍟](bold #ff2b2b)"
