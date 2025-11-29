@@ -28,12 +28,12 @@ style = "bold #0069cc"
 disabled = false
 
 [directory]
-format = "[$path ]($style)[$read_only ]($read_only_style)"
+format = "[$path ]($style)[($read_only )]($read_only_style)"
 repo_root_format = "[󰊢 $repo_root$path ]($repo_root_style)"
 style = "#de00d6"
 repo_root_style = "#de00d6"
 
-read_only = ' ! '
+read_only = '!'
 read_only_style = "#bb1c00"
 truncation_length = 5
 truncate_to_repo = true
